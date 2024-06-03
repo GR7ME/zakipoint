@@ -35,7 +35,7 @@ const SignUp: React.FC = (): React.ReactElement => {
   } = useForm<InputType>({
     resolver: yupResolver(authschema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data: InputType) => console.log(data);
 
   console.log(watch("email"));
 
