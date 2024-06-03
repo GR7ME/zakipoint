@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-
+    'endapi',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'my_db',
+        'NAME':'db',
         'USER': 'endapis',
         'PASSWORD': 'endapis@123',
         'HOST': 'localhost',
