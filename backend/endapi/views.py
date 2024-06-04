@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import SigninForm
 from .models import Admins
+from django.contrib.auth.models import User
 # Create your views here.
 # views.py
 
@@ -20,7 +21,6 @@ def signin_view(request):
              role = form.cleaned_data['role']
              user = authenticate(request, email=email, password=password)
              form.save()
-            # Redirect to a success page or do something else
              return redirect('success')
     else:
         form = SigninForm()
@@ -31,9 +31,8 @@ def admins_view(request):
     predefined_password = "password123"
     admin_exists = Admins.objects.filter(email=predefined_email).exists()
     if not admin_exists:
-        # Create a new instance of the Admin model with predefined values
-        admin = Admins(email=predefined_email, password=predefined_password)
+        admin = Admins.objects.create_user(email=predefined_email, password=predefined_password)
         admin.save()
-    return redirect('Admin') 
+    return HttpResponse('Admins') 
 
 
