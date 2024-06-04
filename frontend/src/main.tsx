@@ -4,20 +4,27 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import "./index.css";
 import SignUp from "@/pages/login/SignUp.tsx";
 import SignIn from "@/pages/login/SignIn.tsx";
+import LoginLayout from "./layout/LoginLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/login"/>,
+    element: <Navigate to="/auth/login"/>,
   },
   {
-    path: "/login/",
-    element: <SignIn />
-  },
-  {
-    path: "signup/",
-    element: <SignUp />,
-  },
+    path: "/auth",
+    element: <LoginLayout/>,
+    children: [
+      {
+        path: "login/",
+        element: <SignIn/>
+      },
+      {
+        path: "signup/",
+        element: <SignUp />,
+      },
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
