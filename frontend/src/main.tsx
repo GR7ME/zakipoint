@@ -10,6 +10,7 @@ import SignUp from "@/pages/login/SignUp.tsx";
 import SignIn from "@/pages/login/SignIn.tsx";
 import LoginLayout from "./layout/LoginLayout";
 import DashboardLayout from "@/layout/DashboardLayout";
+import { Toaster } from "@/components/ui/sonner"
 
 const router = createBrowserRouter([
   {
@@ -53,5 +54,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster richColors position="top-right" />
   </React.StrictMode>,
 );
