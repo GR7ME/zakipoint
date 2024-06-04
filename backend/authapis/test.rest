@@ -1,0 +1,23 @@
+### 
+
+POST http://127.0.0.1:8000/auth/login HTTP/1.1
+Content-Type: application/json
+Content-Length: 60
+
+{"username": "admin2", "password": "admin2"}
+
+
+### 
+
+POST http://127.0.0.1:8000/auth/signup HTTP/1.1
+Content-Type: application/json
+Content-Length: 60
+
+{"username": "admin2", "password": "admin2", "email": "admin2@admin.com"}
+###
+
+GET http://127.0.0.1:8000/auth/testtoken HTTP/1.1
+Content-Type: application/json
+Authorization: Token 4e5a3a3722d7356f0567839325663793f2789a40
+
+{}
