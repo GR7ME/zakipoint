@@ -8,11 +8,8 @@ from django.contrib.auth.models import User
 # Create your views here.
 # views.py
 
-def hello_world(request):
-    return HttpResponse("Testing Phase")
-
 def signin_view(request):
-    return HttpResponse('Data save Successfully')
+    return HttpResponse('Signin part run successfully')
 
 def admins_view(request):
     return HttpResponse('Admins') 
