@@ -9,23 +9,29 @@ from rest_framework.views import APIView
 from django.http import Http404
 from .serializers import UserSerializer
 from .models import User
+from django.views.decorators.csrf import csrf_exempt
 
 @api_view(['POST'])
 def login(request):
-    username = request.data.get('username')
+    email = request.data.get('email')
     password = request.data.get('password')
-    if username is None or password is None:
-        return Response({'error': 'Please provide both username and password'},
+    if email is None or password is None:
+        return Response({'message': 'Please provide both email and password',
+                         'success': False},
                         status=400)
-    user = User.objects.filter(username=username).first()
+    user = User.objects.filter(email=email).first()
     if not user:
-        return Response({'error': 'Invalid Credentials'},
+        return Response({'message': 'Invalid Credentials',
+                         'success': False},
                         status=404)
     if not user.check_password(password):
-        return Response({'error': 'Invalid Credentials'},
+        return Response({'message': 'Invalid Credentials',
+                         'success': False},
                         status=404)
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({'token': token.key})
+    return Response({'message': 'Login successful',
+                        'success': True,
+                        'token': token.key})
 
 @api_view(['POST'])
 def signup(request):
