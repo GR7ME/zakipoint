@@ -2,6 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import(
-    Signin
+    Signin,
+    Admins
 )
 admin.site.register(Signin)
+admin.site.register(Admins)
