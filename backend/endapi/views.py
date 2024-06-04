@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from .serializers import AdminsSerializer
+from rest_framework.renderers import JSONRenderer
 from .forms import SigninForm
 from .models import Admins
-from django.contrib.auth.models import User
+
 # Create your views here.
 # views.py
 
@@ -12,6 +12,9 @@ def signin_view(request):
     return HttpResponse('Signin part run successfully')
 
 def admins_view(request):
-    return HttpResponse('Admins') 
+    admins = Admins.objects.all()
+    serializer = AdminsSerializer(admins, many=True)
+    serialized_data = JSONRenderer().render(serializer.data)
+    return HttpResponse(serialized_data, content_type='application/json') 
 
 
