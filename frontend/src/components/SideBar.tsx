@@ -3,8 +3,8 @@ import { DashboardIcon, ReaderIcon, GearIcon } from "@radix-ui/react-icons";
 
 const SideBar = () => {
   return (
-    <div className="sticky min-w-max p-4 border-dashed border-r-2">
-      <ul className="w-full h-full flex flex-col mx-2 gap-1">
+    <div className="sticky min-w-max p-4 border border-r-2 ml-2">
+      <ul className="w-full h-full flex flex-col gap-1">
         <li>
           <Button
             variant="ghost"

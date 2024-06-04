@@ -14,14 +14,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const loggroups: string[] = [
-    "pyspark-1",
-    "pyspark-2"
-]
+const loggroups: string[] = ["pyspark-1", "pyspark-2"];
 
 const NavBar = () => {
   return (
-    <div className="flex justify-between items-center mx-2 my-2">
+    <div className="flex justify-between items-center mx-2 my-2 border border-b-2">
       <div className="w-36 flex">
         <img src={zph} />
         <div className="">
@@ -32,9 +29,11 @@ const NavBar = () => {
             <SelectContent>
               <SelectGroup className="text-sm font-light">
                 <SelectLabel>Log Groups</SelectLabel>
-                {loggroups.map((value)=>
-                <SelectItem key={value} value={value}>{value}</SelectItem>
-                )}
+                {loggroups.map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
