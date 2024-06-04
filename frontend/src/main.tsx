@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.tsx";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import "./index.css";
 import SignUp from "@/pages/login/SignUp.tsx";
 import SignIn from "@/pages/login/SignIn.tsx";
@@ -9,21 +8,16 @@ import SignIn from "@/pages/login/SignIn.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Navigate to="/login"/>,
   },
   {
     path: "/login/",
-    children: [
-      {
-        path: "signup/",
-        element: <SignUp />,
-      },
-      {
-        path: "signin/",
-        element: <SignIn />,
-      },
-    ],
-  }
+    element: <SignIn />
+  },
+  {
+    path: "signup/",
+    element: <SignUp />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
