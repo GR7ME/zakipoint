@@ -1,8 +1,6 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from .serializers import AdminsSerializer
 from rest_framework.renderers import JSONRenderer
-from .forms import SigninForm
 from .models import Admins
 
 # Create your views here.
@@ -10,6 +8,7 @@ from .models import Admins
 
 def signin_view(request):
     return HttpResponse('Signin part run successfully')
+
 
 def admins_view(request):
     admins = Admins.objects.all()
