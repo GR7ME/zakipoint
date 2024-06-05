@@ -1,13 +1,16 @@
 from django.http import HttpResponse
-from .serializers import AdminsSerializer
+from .serializers import AdminsSerializer,SigninSerializer
 from rest_framework.renderers import JSONRenderer
-from .models import Admins
+from .models import Admins,Signin
 
 # Create your views here.
 # views.py
 
 def signin_view(request):
-    return HttpResponse('Signin part run successfully')
+    signin = Signin.objects.all()
+    serializer = SigninSerializer(signin, many=True)
+    serialized_data = JSONRenderer().render(serializer.data)
+    return HttpResponse(serialized_data, content_type='application/json')
 
 
 def admins_view(request):
