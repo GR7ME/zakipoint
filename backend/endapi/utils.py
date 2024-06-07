@@ -26,15 +26,20 @@ def generate_pyspark_log():
     log_group = {
         "LOG GROUP": {
             "PYSPARK": {
-                "PYSPARK 1": {"LOGS": generate_logs("PYSPARK", 20)},
-                "PYSPARK 2": {"LOGS": generate_logs("PYSPARK", 400)},
+                "PYSPARK 1": {"LOGS": generate_logs("PYSPARK", 30)},
+                "PYSPARK 2": {"LOGS": generate_logs("PYSPARK", 10)},
+            },
+            "Elasticsearch": {
+                "Elasticsearch1": {"LOGS": generate_logs("Elasticsearch", 10)},
+                "Elasticsearch2": {"LOGS": generate_logs("Elasticsearch", 20)},
             },
             "Pentaho": {
-                "Pentaho1": {"LOGS": generate_logs("Pentaho", 400)},
-                "Pentaho2": {"LOGS": generate_logs("Pentaho", 200)},
+                "Pentaho1": {"LOGS": generate_logs("Pentaho", 5)},
+                "Pentaho2": {"LOGS": generate_logs("Pentaho", 5)},
             },
         },
-        "LOG 2": generate_logs("LOG 2", 500),
-        "LOG 3": generate_logs("LOG 3", 100),
+        "1": generate_logs("Elasticsearch", 500),
+        "2": generate_logs("Pyspark", 300),
+        "3": generate_logs("Pentaho", 200),
     }
     return log_group

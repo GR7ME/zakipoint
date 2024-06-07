@@ -26,10 +26,11 @@ class LogEntry(models.Model):
     timestamp = models.DateTimeField()
     message_status = models.CharField(max_length=10)
     message = models.TextField()
-    log_type = models.CharField(max_length=50)
+    log_group = models.CharField(max_length=250)
+    log_id = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.timestamp} - {self.message_status} - {self.message}"
+        return f"{self.timestamp} - {self.message_status} - {self.message} - {self.log_group} - {self.log_id}"
 
 
 # class Admins(models.Model):

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Admins, Signin
+from .models import Admins, Signin, LogEntry
 
 
 class SigninSerializer(serializers.ModelSerializer):
@@ -12,3 +12,10 @@ class AdminsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Admins
         fields = ["id", "email", "password"]
+
+
+
+class LogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LogEntry
+        fields = '__all__'
